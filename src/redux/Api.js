@@ -67,3 +67,14 @@ export const signInAuthOperation = async (state) => {
   const signInResponse = await axios.post("/users/login", state);
   return signInResponse;
 };
+
+export const getCurrUser = async (userToken) => {
+    token.set(userToken)
+    const { data }  = await axios.get("/users/current");
+    return data;
+}
+
+export const logOutUser = async () => {
+    await axios.post('/users/logout');
+    token.unset();
+}

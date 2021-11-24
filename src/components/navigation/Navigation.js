@@ -1,16 +1,21 @@
 import React from "react";
 import { mainRoutesAuth, mainRoutesHome } from "../../routes/mainRoutes";
 import NavigationItem from "./navigationItem/NavigationItem";
-import { h2, nav, navUl, li, link, linkActive } from "./Navigation.module.css";
-import { NavLink } from "react-router-dom";
+import { h2, nav, navUl, li, link } from "./Navigation.module.css";
 import { useSelector } from "react-redux";
 import { isLogged } from "../../redux/auth/authSelectors";
-
+import { useDispatch } from "react-redux";
+  import authOperations from "../../redux/auth/authOperations";
 const Navigation = ({
   routesAuth = mainRoutesAuth,
   routesHome = mainRoutesHome,
 }) => {
   const isLoggedIn = useSelector(isLogged);
+  const dispatch = useDispatch();
+
+  const onHandleLogout = () => {
+    dispatch(authOperations.logOut())
+  }
   return (
     <nav className={nav}>
       <h2 className={h2}>PhoneBook</h2>
@@ -20,14 +25,12 @@ const Navigation = ({
             <NavigationItem key={path} name={name} path={path} exact={exact} />
           ))}
           <li className={li}>
-            <NavLink
+            <button
               className={link}
-              activeClassName={linkActive}
-              to="/signout"
-              exact
+              onClick={onHandleLogout}
             >
               SignOut
-            </NavLink>
+            </button>
           </li>
         </ul>
       ) : (

@@ -32,7 +32,12 @@ const authSlice = createSlice({
     [authOperations?.getCurrentUser?.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
-    },
+      },
+      [authOperations.logOut.fulfilled](state, action) {
+          state.user = initialState.user;
+          state.token = initialState.token;
+          state.isLoggedIn = initialState.isLoggedIn
+    }
   },
 });
 export default authSlice.reducer;
