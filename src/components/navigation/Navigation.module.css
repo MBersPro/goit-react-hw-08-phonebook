@@ -1,0 +1,38 @@
+.nav {
+  padding: 10px 25px;
+  background-color: navy;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #80bfff;
+  font-family: "Roboto", sans-serif;
+}
+
+.navUl {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.li {
+  list-style: none;
+}
+.li:not(:last-child) {
+  margin-right: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: #80bfff;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+.linkActive {
+  color: white;
+}
