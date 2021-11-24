@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "name": "Rome",
+      "number": "3453453",
+      "id": "f49c0d1f-39bd-472f-bddd-9d3af88a7212"
+    },
+    {
+      "name": "Sasha",
+      "number": "2342934792884",
+      "id": "f31948a8-fea3-44e1-a198-464f38d6518a"
+    },
+    {
+      "name": "Dime",
+      "number": "99999999999",
+      "id": "c62ec5fc-8569-4e66-9e98-8555628adbc0"
+    }
+  ]
+}

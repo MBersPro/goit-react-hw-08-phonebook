@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
+import authOperations from "../../redux/auth/authOperations";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -16,6 +19,9 @@ const Auth = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    location.pathname === "/signup"
+      ? dispatch(authOperations.register({ name, email, password }))
+      : dispatch(authOperations.logIn({ email, password }));
   };
 
   return (

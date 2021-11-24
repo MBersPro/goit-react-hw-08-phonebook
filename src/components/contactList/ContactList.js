@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { ul, p } from "./ContactList.module.css";
-import { deleteContactOperation} from "../../redux/contacts/phoneBookOperations";
-import { getSomeContactsSelector,  } from "../../redux/contacts/phoneBookSelectors";
+//import { deleteContactOperation} from "../../redux/contacts/phoneBookOperations";
+import { getSomeContactsSelector } from "../../redux/contacts/phoneBookSelectors";
 import { useSelector, useDispatch } from "react-redux";
+import { deleteContactOperation, getContactsOperation } from "../../redux/Api";
+import { tokenSelector } from "../../redux/auth/authSelectors";
 
 const ContactList = () => {
   const filteredContacts = useSelector(getSomeContactsSelector);
-  const dispatch = useDispatch()
+  const token = useSelector(tokenSelector);
+  const dispatch = useDispatch();
   const removeContact = (id) => {
-    dispatch(deleteContactOperation(id))
-  }
+    dispatch(deleteContactOperation(id, token));
+  };
+
+  // useEffect(() =>{dispatch(getContactsOperation(token))}, [dispatch])
 
   return (
     <ul className={ul}>
-      {filteredContacts.map((item) => (
+      {filteredContacts?.map((item) => (
         <li key={item.id}>
           <p className={p}>
             {item.name}: {item.number}

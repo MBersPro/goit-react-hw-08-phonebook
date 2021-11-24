@@ -3,15 +3,7 @@ import HomePage from "./pages/HomePage";
 import LogInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 
-export const mainRoutes = [
-  {
-    name: "Home",
-    path: "/",
-    exact: true,
-    component: HomePage,
-    isPrivate: false,
-    isRestricted: false,
-  },
+export const mainRoutesAuth = [
   {
     name: "SignIn",
     path: "/signin",
@@ -27,6 +19,17 @@ export const mainRoutes = [
     component: SignUpPage,
     isPrivate: false,
     isRestricted: true,
+  },
+];
+
+export const mainRoutesHome = [
+  {
+    name: "Home",
+    path: "/",
+    exact: true,
+    component: HomePage,
+    isPrivate: false,
+    isRestricted: false,
   },
   {
     name: "Contacts",

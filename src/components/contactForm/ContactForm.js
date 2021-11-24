@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { form, label, input } from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addNewContactOperation } from "../../redux/contacts/phoneBookOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewContactOperation } from "../../redux/Api";
+import { tokenSelector } from "../../redux/auth/authSelectors";
 
 const initialState = {
   name: "",
@@ -12,12 +13,13 @@ const initialState = {
 const ContactForm = () => {
   const [state, setState] = useState({ ...initialState });
   const dispatch = useDispatch();
+  const token = useSelector(tokenSelector);
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
     const id = uuidv4();
     const arg = { ...state, id };
-    dispatch(addNewContactOperation(arg));
+    dispatch(addNewContactOperation(arg, token));
     setState({ ...initialState });
   };
 
